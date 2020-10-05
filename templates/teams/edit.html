@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block edit %}
+
+<section>
+    <div class="left-container-teams"></div>
+    <div class="right-container-teams">
+        <h2>Update {{ team.name }}</h2>
+        <form action="/teams/{{ team.id }}" method="POST">
+            <div>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" value="{{ team.name }}">
+            </div>
+            <div>
+                <input type="submit">
+            </div>
+        </form>
+    </div>
+</section>
+
+{% endblock edit %}

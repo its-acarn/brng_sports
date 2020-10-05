@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block new %}
+
+<section>
+    <div class="left-container-teams"></div>
+    <div class="right-container-teams">
+        <h2>ADD RESULT</h2>
+        <form action="/results" method="POST">
+            <label for="team_1">Select Team 1:</label>
+            <select name="team_1_id" id="team_1">
+                {% for team in teams %}
+                <option value="{{ team.id }}">{{ team.name }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="team_1_score">Score:</label>
+            <input type="number" step="0.01" id="team_1_score" name="team_1_score">
+            <br>
+            <label for="team_2">Select Team 2:</label>
+            <select name="team_2_id" id="team_2">
+                {% for team in teams %}
+                <option value="{{ team.id }}">{{ team.name }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="team_2_score">Score:</label>
+            <input type="number" step="0.01" id="team_2_score" name="team_2_score">
+            <br><br>
+            <label for="result">Result:</label>
+            <select name="result" id="result">
+                <option value="{{ True }}">Team 1</option>
+                <option value="{{ False }}">Team 2</option>
+            </select>
+            <input type="submit">
+        </form>
+    </div>
+</section>
+
+{% endblock new %}

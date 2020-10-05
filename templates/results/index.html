@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block results %}
+
+<section>
+    <div class="left-container-teams"></div>
+    <div class="right-container-teams">
+        <h2>RESULTS</h2>
+        <ul>
+            {% for result in results %}
+            <li><a href="/results/{{ result.id }}">{{ result.team_1.name }} [{{ result.team_1_score }}] v
+                    {{ result.team_2.name }} [{{ result.team_2_score }}]</a></li>
+            {% endfor %}
+        </ul>
+        <a href="/result/new">ADD RESULT</a>
+    </div>
+
+</section>
+
+{% endblock results %}

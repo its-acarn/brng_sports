@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block show %}
+
+<section>
+    <div class="left-container-teams"></div>
+    <div class="right-container-teams">
+        <h2>RESULT</h2>
+    </div>
+    <div>
+        {{ result.team_1.name }} <br><br>
+        vs <br><br>
+        {{ result.team_2.name }} <br>
+    </div>
+    <div>
+        <a href="/results/{{ result.id }}/edit">EDIT RESULT</a><br>
+    </div>
+</section>
+
+{% endblock show %}

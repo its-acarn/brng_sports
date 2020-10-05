@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section>
+    <div class="left-container-teams"></div>
+    <div class="right-container-teams">
+        <h2>ADD TEAM</h2>
+        <form action="/teams" method="POST">
+            <div>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name">
+            </div><br>
+            <div>
+                <label for="league_id">League:</label>
+                <select name="league_id" id="league_id">
+                    {% for league in leagues %}
+                    <option value="{{ league.id }}">{{ league.name }}</option>
+                    {% endfor %}
+                </select>
+            </div><br>
+            <div>
+                <input type="submit">
+            </div>
+        </form>
+    </div>
+</section>
+
+{% endblock %}
