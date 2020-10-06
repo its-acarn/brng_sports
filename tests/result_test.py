@@ -46,5 +46,5 @@ class TestResult(unittest.TestCase):
 
     def test_determine_result__draw(self):
         get_winner = self.result_3.determine_result()
-        self.assertEqual("Draw", get_winner)
+        self.assertEqual(None, get_winner)
 
