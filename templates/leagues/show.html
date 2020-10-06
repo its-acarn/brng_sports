@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section>
+    <div class="left-container-teams"></div>
+    <div class="right-container-teams">
+        <h2>{{ league.name }}</h2>
+    </div>
+    <div>
+        <a href="/leagues/{{ league.id }}/edit">Update {{league.name}} Info</a>
+    </div>
+    <div>
+        <h2>Results</h2>
+        <ul>
+
+            {% for result in results %}
+            <li><a href="/results/{{ result.id }}">
+                    {% for team in teams %}
+                    {% if team.id == result.team_1 %}
+                    {{ team.name }}
+                    {% if result.result == True %} {{ "W" }} {% endif %}
+                    {% endif %}
+
+                    {% endfor %}
+
+                    {{ result.team_1_score }} v
+
+                    {% for team in teams %}
+                    {% if team.id == result.team_2 %}
+                    {{ team.name }}
+                    {% if result.result == False %} {{ "W" }} {% endif %}
+                    {% endif %}
+
+                    {% endfor %}
+
+                    {{ result.team_2_score }}
+
+
+                </a></li>
+            {% endfor %}
+        </ul>
+        <button><a href="/result/new">Add result</a></button>
+    </div>
+</section>
+
+{% endblock %}

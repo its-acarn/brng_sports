@@ -5,16 +5,18 @@
 <section>
     <div class="left-container-teams"></div>
     <div class="right-container-teams">
-        <h2>ADD LEAGUE</h2>
-        <form action="/leagues" method="POST">
+        <h2>Update {{ league.name }}</h2>
+        <form action="/leagues/{{ league.id }}" method="POST">
             <div>
                 <label for="name">Name:</label>
-                <input type="text" id="name" name="name">
-            </div><br>
+                <input type="text" id="name" name="name" value="{{ league.name }}">
+            </div>
             <div>
                 <label for="league_size_limit">League Size Limit:</label>
-                <input type="number" id="league_size_limit" name="league_size_limit">
-            </div><br>
+                <input type="number" id="league_size_limit" name="league_size_limit"
+                    value="{{ league.league_size_limit }}">
+            </div>
+            <br>
             <div>
                 <input type="submit">
             </div>

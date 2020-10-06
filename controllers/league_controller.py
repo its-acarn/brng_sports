@@ -19,33 +19,39 @@ def leagues():
 def add_league():
     return render_template("/leagues/new.html")
 
-# # CREATE
-# @teams_blueprint.route("/teams", methods=["POST"])
-# def create_team():
-#     name = request.form["name"]
-#     new_team = Team(name)
-#     team_repo.save(new_team)
-#     return redirect("/teams")
+# CREATE
+@leagues_blueprint.route("/leagues", methods=["POST"])
+def create_leagues():
 
-# # SHOW
-# @teams_blueprint.route("/teams/<id>")
-# def show_team(id):
-#     teams = team_repo.select_all()
-#     team_1 = team_repo.select(id)
-#     results = team_repo.select_all_team_results(id)
+    name = request.form["name"]
+    league_size_limit = request.form["league_size_limit"]
+    new_league = League(name, league_size_limit)
+    league_repo.save(new_league)
+    league_repo.update(new_league)
+    
+    return redirect("/leagues")
 
-#     return render_template("/teams/show.html", team_1=team_1, results=results, teams=teams)
+# SHOW
+@leagues_blueprint.route("/leagues/<id>")
+def show_league(id):
+    leagues = league_repo.select_all()
+    league = league_repo.select(id)
+    #ADD IN LEAGUE TEAMS
+    return render_template("/leagues/show.html", leagues=leagues, league=league)
 
-# # EDIT
-# @teams_blueprint.route("/teams/<id>/edit")
-# def edit_team(id):
-#     team = team_repo.select(id)
-#     return render_template('/teams/edit.html', team=team)
+# EDIT
+@leagues_blueprint.route("/leagues/<id>/edit")
+def edit_league(id):
+    league = league_repo.select(id)
+    return render_template('/leagues/edit.html', league=league)
 
-# # UPDATE
-# @teams_blueprint.route("/teams/<id>", methods=["POST"])
-# def update_team(id):
-#     name = request.form["name"]
-#     team = Team(name, id)
-#     team_repo.update(team)
-#     return redirect("/teams")
+# UPDATE
+@leagues_blueprint.route("/leagues/<id>", methods=["POST"])
+def update_league(id):
+    league = league_repo.select(id)
+    name = request.form["name"]
+    league_size_limit = request.form["league_size_limit"]
+    league.name = name
+    league.league_size_limit = league_size_limit
+    league_repo.update(league)
+    return redirect("/leagues")
