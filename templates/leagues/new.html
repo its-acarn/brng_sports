@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section>
+    <div class="left-container-teams"></div>
+    <div class="right-container-teams">
+        <h2>ADD LEAGUE</h2>
+        <form action="/leagues" method="POST">
+            <div>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name">
+            </div><br>
+            <div>
+                <input type="submit">
+            </div>
+        </form>
+    </div>
+</section>
+
+{% endblock %}

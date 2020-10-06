@@ -1,4 +1,5 @@
 from flask import Flask, Blueprint, redirect, render_template, request
+import repos.league_repo as league_repo
 import repos.team_repo as team_repo
 import repos.result_repo as result_repo
 from models.league import League
@@ -7,16 +8,16 @@ from models.result import Result
 
 leagues_blueprint = Blueprint("leagues", __name__)
 
-# # INDEX
-# @leagues_blueprint.route("/teams")
-# def teams():
-#     teams = team_repo.select_all()
-#     return render_template("/teams/index.html", teams=teams)
+# INDEX
+@leagues_blueprint.route("/leagues")
+def leagues():
+    leagues = league_repo.select_all()
+    return render_template("/leagues/index.html", leagues=leagues)
 
-# # NEW
-# @teams_blueprint.route("/teams/new")
-# def add_team():
-#     return render_template("/teams/new.html")
+# NEW
+@leagues_blueprint.route("/league/new")
+def add_league():
+    return render_template("/leagues/new.html")
 
 # # CREATE
 # @teams_blueprint.route("/teams", methods=["POST"])
