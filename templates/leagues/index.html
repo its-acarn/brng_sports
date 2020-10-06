@@ -6,11 +6,20 @@
     <div class="left-container-teams"></div>
     <div class="right-container-teams">
         <h2>LEAGUES</h2>
-        <ul>
+        <table>
+            <tr>
+                <th>League Name</th>
+                <th>Size</th>
+                <th>Current No. Teams</th>
+            </tr>
             {% for league in leagues %}
-            <li><a href="/leagues/{{ league.id }}">{{ league.name }}</a></li>
+            <tr>
+                <td><a href="/leagues/{{ league.id }}">{{ league.name }}</a></td>
+                <td>{{ league.league_size_limit }}</td>
+                <td>{{ league.no_of_teams}}</td>
+            </tr>
             {% endfor %}
-        </ul>
+        </table>
         <a href="/league/new">ADD LEAGUE</a>
     </div>
 </section>

@@ -5,42 +5,82 @@
 <section>
     <div class="left-container-teams"></div>
     <div class="right-container-teams">
-        <h2>{{ team_1.name }}</h2>
+        <h2>{{ team.name }}</h2>
     </div>
-    <div>
-        <a href="/teams/{{ team_1.id }}/edit">Update {{team_1.name}} Team Info</a>
-    </div>
+
     <div>
         <h2>Results</h2>
-        <ul>
 
-            {% for result in results %}
-            <li><a href="/results/{{ result.id }}">
-                    {% for team in teams %}
-                    {% if team.id == result.team_1 %}
-                    {{ team.name }}
-                    {% if result.result == True %} {{ "W" }} {% endif %}
-                    {% endif %}
+        {% for result in results %}
 
-                    {% endfor %}
+        <a href="/results/{{ result.id }}">
+            <div>
+                {{ result.team_1.name }}
+            </div>
+            <div>
+                v
+            </div>
+            <div>
+                {{ result.team_2.name }}
+            </div><br>
+            <div>
+                {{ result.team_1_score }}
+            </div>
+            <div>
+                v
+            </div>
+            <div>
+                {{ result.team_2_score }}
+            </div>
+        </a>
+        {% endfor %}
 
-                    {{ result.team_1_score }} v
-
-                    {% for team in teams %}
-                    {% if team.id == result.team_2 %}
-                    {{ team.name }}
-                    {% if result.result == False %} {{ "W" }} {% endif %}
-                    {% endif %}
-
-                    {% endfor %}
-
-                    {{ result.team_2_score }}
 
 
-                </a></li>
-            {% endfor %}
-        </ul>
-        <button><a href="/result/new">Add result</a></button>
+
+
+
+
+
+
+
+
+
+        {% for result in results %}
+        <li><a href="/results/{{ result.id }}">
+                {% for team in teams %}
+                {% if team.id == result.team_1.id %}
+                {{ team.name }}
+                {% if result.result == True %} {{ "W" }} {% endif %}
+                {% endif %}
+
+                {% endfor %}
+
+                {{ result.team_1_score }} v
+
+                {% for team in teams %}
+                {% if team.id == result.team_2.id %}
+                {{ team.name }}
+                {% if result.result == False %} {{ "W" }} {% endif %}
+                {% endif %}
+
+                {% endfor %}
+
+                {{ result.team_2_score }}
+
+
+            </a></li>
+        {% endfor %}
+
+        <div>
+            <h4>Edit Team</h4>
+        </div>
+        <div>
+            <a href="/teams/{{ team_1.id }}/edit">Update {{team_1.name}} Team Info</a>
+        </div>
+        <div>
+            <a href="/result/new">Add result</a>
+        </div>
     </div>
 </section>
 

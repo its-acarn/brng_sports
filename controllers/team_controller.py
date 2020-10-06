@@ -1,8 +1,10 @@
 from flask import Flask, Blueprint, redirect, render_template, request
 import repos.league_repo as league_repo
 import repos.team_repo as team_repo
+import repos.result_repo as result_repo
 from models.league import League
 from models.team import Team
+from models.result import Result
 
 teams_blueprint = Blueprint("teams", __name__)
 
@@ -42,9 +44,9 @@ def create_team():
 @teams_blueprint.route("/teams/<id>")
 def show_team(id):
     teams = team_repo.select_all()
-    team_1 = team_repo.select(id)
-    #ADD IN RESULTS
-    return render_template("/teams/show.html", teams=teams, team_1=team_1)
+    team = team_repo.select(id)
+    results = result_repo.select_all()
+    return render_template("/teams/show.html", teams=teams, team=team, results=results)
 
 # EDIT
 @teams_blueprint.route("/teams/<id>/edit")
