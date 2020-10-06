@@ -25,7 +25,7 @@ def create_result():
     team_1_id = request.form["team_1_id"]
     team_1 = team_repo.select(team_1_id)
     team_1_score = request.form["team_1_score"]
-    
+
     team_2_id = request.form["team_2_id"]
     team_2 = team_repo.select(team_2_id)
     team_2_score = request.form["team_2_score"]
@@ -33,6 +33,7 @@ def create_result():
     new_result = Result(team_1, team_1_score, team_2, team_2_score)
     result_repo.save(new_result)
     new_result.determine_result()
+    
 
     team_repo.update(team_1)
     team_repo.update(team_2)
