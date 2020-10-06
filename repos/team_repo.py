@@ -2,6 +2,7 @@ from db.run_sql import run_sql
 from models.league import League
 from models.team import Team
 from models.result import Result
+import repos.league_repo as league_repo
 
 
 def save(team):
@@ -19,7 +20,8 @@ def select_all():
     output = run_sql(sql)
 
     for row in output:
-        team = Team(row['name'], row['id'])
+        league = league_repo.select(row["league_id"])
+        team = Team(row['name'], league, row['games_played'], row['games_won'], row['games_lost'], row['games_drawn'], row['id'])
         teams.append(team)
     return teams
 
@@ -28,7 +30,9 @@ def select(id):
     sql = "SELECT * FROM teams WHERE id = %s"
     values = [id]
     output = run_sql(sql, values)[0]
-    team = Team(output['name'], output['id'])
+    
+    league = league_repo.select(output["league_id"])
+    team = Team(output['name'], league, output['games_played'], output['games_won'], output['games_lost'], output['games_drawn'], output['id'])
     return team
 
 

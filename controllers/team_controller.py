@@ -21,28 +21,30 @@ def add_team():
 # CREATE
 @teams_blueprint.route("/teams", methods=["POST"])
 def create_team():
-    name = request.form["name"]
-    new_team = Team(name)
-    team_repo.save(new_team)
-
     league_id = request.form["league_id"]
-    league = league_repo.select(league_id)
+    league = league_repo.select(league_id)   
 
-    check = league.add_team_to_league(new_team)
+    if league.league_size_limit == league.no_of_teams:
+        return redirect("/teams") #CHECK THIS FOR UX - USER NEEDS TO KNOW WHY TEAM HASNT BEEN CREATED!!!!
+    else:
+        name = request.form["name"]
+        new_team = Team(name)
+        team_repo.save(new_team)
 
-    team_repo.update(new_team)
-    league_repo.update(league)
+        league.add_team_to_league(new_team)
 
+        team_repo.update(new_team)
+        league_repo.update(league)
+    
     return redirect("/teams")
-#######################################START HERE TOMORROW##################
+
 # SHOW
 @teams_blueprint.route("/teams/<id>")
 def show_team(id):
     teams = team_repo.select_all()
     team_1 = team_repo.select(id)
-    results = team_repo.select_all_team_results(id)
 
-    return render_template("/teams/show.html", team_1=team_1, results=results, teams=teams)
+    return render_template("/teams/show.html", teams=teams, team_1=team_1)
 
 # EDIT
 @teams_blueprint.route("/teams/<id>/edit")

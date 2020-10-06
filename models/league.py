@@ -7,10 +7,11 @@ class League:
         self.id = id
             
 
-    def add_team_to_league(self, team):
+    def check_limit(self):
         if self.league_size_limit == self.no_of_teams:
-            return None
-        
-        else:
-            team.league = self
-            self.no_of_teams += 1
+            return None        
+
+
+    def add_team_to_league(self, team):
+        team.league = self
+        self.no_of_teams += 1
