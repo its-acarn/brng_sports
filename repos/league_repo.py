@@ -18,7 +18,7 @@ def select_all():
     output = run_sql(sql)
 
     for row in output:
-        league = League(row['name'], row['league_size_limit'], row['id'])
+        league = League(row['name'], row['league_size_limit'], row['no_of_teams'], row['id'])
         leagues.append(league)
     return leagues
 
@@ -27,7 +27,7 @@ def select(id):
     sql = "SELECT * FROM leagues WHERE id = %s"
     values = [id]
     output = run_sql(sql, values)[0]
-    league = League(output['name'], output['league_size_limit'], output['id'])
+    league = League(output['name'], output['league_size_limit'], output['no_of_teams'], output['id'])
     return league
 
 

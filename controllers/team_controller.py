@@ -27,8 +27,9 @@ def create_team():
 
     league_id = request.form["league_id"]
     league = league_repo.select(league_id)
-    league.add_team_to_league(new_team)
-    
+
+    check = league.add_team_to_league(new_team)
+
     team_repo.update(new_team)
     league_repo.update(league)
 
