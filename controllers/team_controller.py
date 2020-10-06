@@ -43,20 +43,22 @@ def create_team():
 def show_team(id):
     teams = team_repo.select_all()
     team_1 = team_repo.select(id)
-
+    #ADD IN RESULTS
     return render_template("/teams/show.html", teams=teams, team_1=team_1)
 
 # EDIT
 @teams_blueprint.route("/teams/<id>/edit")
 def edit_team(id):
     team = team_repo.select(id)
+
     return render_template('/teams/edit.html', team=team)
 
 # UPDATE
 @teams_blueprint.route("/teams/<id>", methods=["POST"])
 def update_team(id):
+    team = team_repo.select(id)
     name = request.form["name"]
-    team = Team(name, id)
+    team.name = name
     team_repo.update(team)
     return redirect("/teams")
 
