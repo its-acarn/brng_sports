@@ -1,1 +1,151 @@
+/* STYLES AFFECTING ALL PAGES */
+body {
+	height: 100vh;
+	max-height: 100vh;
+	width: 100vw;
+	margin: 0;
+	font-family: "Raleway", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0;
+	padding: 0;
+}
+
 /* HEADER STYLES */
+body > header {
+	background-color: #000067;
+	display: flex;
+	height: 10vh;
+	max-height: 200px;
+	align-items: center;
+	overflow: hidden;
+}
+
+.left-header {
+	width: 50vw;
+}
+
+.left-header > a > div > h1 {
+	font-family: "Fugaz One", sans-serif;
+	font-style: italic;
+	font-size: 5rem;
+	color: white;
+	padding-left: 0.1em;
+	text-decoration: underline;
+	text-decoration-color: #ffff00;
+}
+
+.right-header {
+	width: 50vw;
+	display: flex;
+	justify-content: flex-end;
+	padding-right: 4rem;
+}
+
+.right-header > div > a {
+	font-family: "Red Hat Text", sans-serif;
+	font-style: italic;
+	font-weight: bold;
+	padding: 0 1rem 0 2rem;
+	text-decoration: none;
+	color: white;
+}
+
+.right-header > div > a:hover {
+	text-decoration: line-through;
+	text-decoration-color: #ffff00;
+}
+
+/* FOOTER STYLES */
+body > footer {
+	display: flex;
+	position: absolute;
+	width: 100vw;
+	bottom: 0;
+	margin: 0;
+	height: 6vh;
+	max-height: 75px;
+	align-items: center;
+	justify-content: flex-end;
+	background-color: #000067;
+	font-family: "Red Hat Text", sans-serif;
+	font-style: italic;
+	font-size: 1rem;
+	color: white;
+}
+body > footer > h4 {
+	padding-right: 2em;
+}
+
+body > footer > h4 > span {
+	font-family: "Fugaz One", sans-serif;
+	text-decoration: underline;
+	text-decoration-color: #ffff00;
+}
+
+/* HOME STYLES */
+.left-right-container {
+	display: flex;
+	background-color: #00009a;
+	height: 84vh;
+	margin: 0;
+}
+.left-container-items {
+	display: flex;
+	width: 50vw;
+	background: url("img/free-to-use-sounds-dPpRXFq5uxo-unsplash.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	text-align: center;
+	align-items: center;
+	/* justify-content: center; */
+}
+
+.left-container-items > p {
+	font-family: "Red Hat Text", sans-serif;
+	font-style: italic;
+	font-weight: bold;
+	font-size: 75px;
+	color: white;
+	margin-bottom: 100px;
+}
+
+.right-container-items {
+	display: flex;
+	flex-direction: column;
+	width: 50vw;
+	text-align: center;
+	align-items: center;
+	justify-content: center;
+}
+
+.right-container-items > div {
+	display: flex;
+	background-color: #000067;
+	margin: auto;
+	align-items: center;
+	justify-content: center;
+}
+
+.right-container-items > div > a {
+	color: white;
+	height: 1em;
+	width: 5em;
+	padding: 1em 1.2em;
+	text-decoration: none;
+	font-family: "Raleway", sans-serif;
+	font-weight: bolder;
+	font-size: 40px;
+}
+
+.right-container-items > div > a:hover {
+	text-decoration: underline;
+	text-decoration-color: #ffff00;
+}

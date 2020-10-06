@@ -4,19 +4,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href='{{ url_for('static', filename='css/main.css') }}'>
     <title>Document</title>
 </head>
 
 <body>
     <header>
-        <h1>BRNG Sports</h1>
-        <a href="/">HOME</a>
+        <section class="left-header">
+            <a href="/">
+                <div>
+                    <h1>BRNG</h1>
+                </div>
+            </a>
+        </section>
+        <section class="right-header">
+            <div>
+                <a href="/">HOME</a>
+            </div>
+            <div>
+                <a href="/leagues">LEAGUES</a>
+            </div>
+            <div>
+                <a href="/teams">TEAMS</a>
+            </div>
+            <div>
+                <a href="/results">RESULTS</a>
+            </div>
+        </section>
     </header>
     <main>
         {% block content %} {% endblock %}
     </main>
     <footer>
-        <h4>BRNG Sports</h4>
+        <h4><span>BRNG</span> Sports ©</h4>
     </footer>
 </body>
 
