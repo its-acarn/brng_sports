@@ -22,6 +22,8 @@ class Result:
             self.team_1.games_played += 1
             self.team_1.games_lost += 1
         else:
+            self.team_1.games_played += 1
+            self.team_2.games_played += 1
             self.team_1.games_drawn += 1
             self.team_2.games_drawn += 1
             winner = "Draw"
