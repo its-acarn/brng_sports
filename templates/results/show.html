@@ -5,15 +5,29 @@
 <section>
     <div class="left-container-teams"></div>
     <div class="right-container-teams">
-        <h2>RESULT</h2>
-    </div>
-    <div>
-        {{ result.team_1.name }} <br><br>
-        vs <br><br>
-        {{ result.team_2.name }} <br>
-    </div>
-    <div>
-        <a href="/results/{{ result.id }}/edit">EDIT RESULT</a><br>
+        <h4>RESULT</h4>
+
+        <div>
+            <h5>League:<a href="/leagues/{{ result.team_1.league.id }}">{{ result.team_1.league.name }}</a></h5>
+        </div>
+        <div>
+            {{ result.team_1.name }}
+        </div>
+        <div>
+            v
+        </div>
+        <div>
+            {{ result.team_2.name }}
+        </div>
+        <div>
+            {{ result.team_1_score }}
+        </div>
+        <div>
+            {{ result.team_2_score }}
+        </div>
+        <div>
+            <a href="/results/{{ result.id }}/edit">EDIT RESULT</a><br>
+        </div>
     </div>
 </section>
 
