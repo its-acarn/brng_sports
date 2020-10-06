@@ -32,8 +32,24 @@ def create_result():
 
     new_result = Result(team_1, team_1_score, team_2, team_2_score)
     result_repo.save(new_result)
-    new_result.determine_result()
     
+    if team_1_score < team_2_score:
+        team_1.games_played += 1
+        team_1.games_won += 1
+        team_2.games_played += 1
+        team_2.games_lost += 1
+
+    elif team_1_score > team_2_score:
+        team_1.games_played += 1
+        team_1.games_lost += 1
+        team_2.games_played += 1
+        team_2.games_won += 1
+
+    else:
+        team_1.games_played += 1
+        team_1.drawn += 1
+        team_2.games_played += 1
+        team_2.drawn += 1
 
     team_repo.update(team_1)
     team_repo.update(team_2)
