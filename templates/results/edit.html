@@ -7,23 +7,12 @@
     <div class="right-container-teams">
         <h2>Update {{ result.team_1.name }} vs {{ result.team_2.name }} Result</h2>
         <form action="/results/{{ result.id }}" method="POST">
-            <label for="team_1">Select Team 1:</label>
-            <select name="team_1_id" id="team_1">
-                {% for team in teams %}
-                <option value="{{ team.id }}">{{ team.name }}</option>
-                {% endfor %}
-            </select>
+            <h4>{{ result.team_1.name }}</h4>
 
             <label for="team_1_score">Score:</label>
             <input type="number" step="0.01" id="team_1_score" name="team_1_score">
             <br>
-            <label for="team_2">Select Team 2:</label>
-            <select name="team_2_id" id="team_2" value="result.team_2.name">
-                {% for team in teams %}
-                <option value="{{ team.id }}">{{ team.name }}</option>
-                {% endfor %}
-            </select>
-
+            <h4>{{ result.team_2.name }}</h4>
             <label for="team_2_score">Score:</label>
             <input type="number" step="0.01" id="team_2_score" name="team_2_score">
             <br><br>
