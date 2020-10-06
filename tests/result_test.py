@@ -34,17 +34,39 @@ class TestResult(unittest.TestCase):
         self.assertEqual(None, self.result_1.id)
 
     
-    def test_determine_result__team_2_win(self):
-        get_winner = self.result_1.determine_result()
-        self.assertEqual("Nick's Chubb", get_winner)
+    # def test_determine_result__team_2_win(self):
+    #     get_winner = self.result_1.determine_result()
+    #     self.assertEqual("Nick's Chubb", get_winner)
 
     
-    def test_determine_result__team_1_win(self):
-        get_winner = self.result_2.determine_result()
-        self.assertEqual("Verdansk Big Thirsters", get_winner) 
+    # def test_determine_result__team_1_win(self):
+    #     get_winner = self.result_2.determine_result()
+    #     self.assertEqual("Verdansk Big Thirsters", get_winner) 
 
 
-    def test_determine_result__draw(self):
-        get_winner = self.result_3.determine_result()
-        self.assertEqual(None, get_winner)
+    # def test_determine_result__draw(self):
+    #     get_winner = self.result_3.determine_result()
+    #     self.assertEqual(None, get_winner)
+
+
+    def test_reverse_result(self):
+        self.result_1.determine_result()
+        self.assertEqual(self.team_1.games_played, 1)
+        self.assertEqual(self.team_1.games_won, 0)
+        self.assertEqual(self.team_1.games_lost, 1)
+        self.assertEqual(self.team_1.games_drawn, 0)
+        self.assertEqual(self.team_2.games_played, 1)
+        self.assertEqual(self.team_2.games_won, 1)
+        self.assertEqual(self.team_2.games_lost, 0)
+        self.assertEqual(self.team_2.games_drawn, 0)
+        self.result_1.reverse_result()
+        self.assertEqual(self.team_1.games_played, 0)
+        self.assertEqual(self.team_1.games_won, 0)
+        self.assertEqual(self.team_1.games_lost, 0)
+        self.assertEqual(self.team_1.games_drawn, 0)
+        self.assertEqual(self.team_2.games_played, 0)
+        self.assertEqual(self.team_2.games_won, 0)
+        self.assertEqual(self.team_2.games_lost, 0)
+        self.assertEqual(self.team_2.games_drawn, 0)
+
 

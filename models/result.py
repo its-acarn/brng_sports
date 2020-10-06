@@ -33,9 +33,29 @@ class Result:
             winner = self.team_1
             return winner
 
-        elif float(self.team_2_score) < float(self.team_1_score):
+        elif float(self.team_2_score) > float(self.team_1_score):
             winner = self.team_2
             return winner
 
         else:
             return None
+
+
+    def reverse_result(self):
+        if float(self.team_1_score) > float(self.team_2_score):
+            self.team_1.games_played -= 1
+            self.team_1.games_won -= 1
+            self.team_2.games_played -= 1
+            self.team_2.games_lost -= 1
+
+        elif float(self.team_2_score) > float(self.team_1_score):
+            self.team_2.games_played -= 1
+            self.team_2.games_won -= 1
+            self.team_1.games_played -= 1
+            self.team_1.games_lost -= 1
+        
+        else:
+            self.team_1.games_played -= 1
+            self.team_2.games_played -= 1
+            self.team_1.games_drawn -= 1
+            self.team_2.games_drawn -= 1 

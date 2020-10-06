@@ -56,71 +56,22 @@ def edit_result(id):
 # UPDATE
 @results_blueprint.route("/results/<id>", methods=["POST"])
 def update_result(id):
-    team_1_id = request.form["team_1_id"]
-    team_1 = team_repo.select(team_1_id)
-    team_1_score = request.form["team_1_score"]
-
-    team_2_id = request.form["team_2_id"]
-    team_2 = team_repo.select(team_2_id)
-    team_2_score = request.form["team_2_score"]
 
     result = result_repo.select(id)
+    result.reverse_result()
+    team_repo.update(result.team_1)
+    team_repo.update(result.team_2)
 
-    winner = result.get_winner()
-    print("############################", winner.name)
-    print("############################", result.team_1.name)
-    print("############################", result.team_2.name)
+    team_1_score = request.form["team_1_score"]
+    team_2_score = request.form["team_2_score"]
 
-
-    if (winner == result.team_1) :
-        team_1.games_played -= 1
-        team_1.games_won -= 1 
-        team_2.games_played -= 1
-        team_2.games_lost -= 1 
-
-    elif (winner == result.team_2) :
-        team_1.games_played -= 1
-        team_1.games_lost -= 1 
-        team_2.games_played -= 1
-        team_2.games_won -= 1 
-
-    else:
-        team_1.games_played -= 1
-        team_2.games_played -= 1
-        result.team_1.games_drawn -= 1
-        result.team_2.games_drawn -= 1
-
-    result.team_1 = team_1
     result.team_1_score = team_1_score
-    result.team_2 = team_2
     result.team_2_score = team_2_score
 
-    winner = result.get_winner()
-    print("############################", winner.name)
-    print("############################", team_1.name)
-    print("############################", team_2.name)
+    result.determine_result()
 
-
-    if (winner == team_1) :
-        team_1.games_played += 1
-        team_1.games_won += 1 
-        team_2.games_played += 1
-        team_2.games_lost += 1 
-
-    elif (winner == team_2) :
-        team_1.games_played += 1
-        team_1.games_lost += 1 
-        team_2.games_played += 1
-        team_2.games_won += 1 
-
-    else:
-        team_1.games_played += 1
-        team_2.games_played += 1
-        result.team_1.games_drawn += 1
-        result.team_2.games_drawn += 1
-
-    team_repo.update(team_1)
-    team_repo.update(team_2)
+    team_repo.update(result.team_1)
+    team_repo.update(result.team_2)
     result_repo.update(result)
 
     return redirect("/results")
