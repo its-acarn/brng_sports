@@ -8,7 +8,7 @@
 
         <div>
             <h2>Teams in {{ league.name }}</h2>
-            <div>
+            <section class="league_table">
                 <table>
                     <tr>
                         <th>Team</th>
@@ -29,8 +29,8 @@
                     {% endif %}
                     {% endfor %}
                 </table>
-            </div><br>
-            <div>
+            </section><br>
+            <section class="league_results">
                 <h4>League Results</h4>
                 {% for result in results %}
                 {% if league.id == result.team_1.league.id %}
@@ -47,7 +47,7 @@
                     {% endif %}
                     {% endfor %}
                 </table>
-            </div>
+            </section>
             <h4>Edit League</h4>
             <a href="/teams/new">Add New Team</a><br>
             <a href="/result/new">Add New Result</a><br>
