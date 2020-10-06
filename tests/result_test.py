@@ -41,7 +41,7 @@ class TestResult(unittest.TestCase):
     
     def test_determine_result__team_1_win(self):
         get_winner = self.result_2.determine_result()
-        self.assertEqual("Verdansk Big Thirsters", get_winner)
+        self.assertEqual("Verdansk Big Thirsters", get_winner) 
 
 
     def test_determine_result__draw(self):

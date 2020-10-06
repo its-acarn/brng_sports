@@ -13,10 +13,14 @@ class Result:
             winner = self.team_1.name
             self.team_1.games_played += 1
             self.team_1.games_won += 1
+            self.team_2.games_played += 1
+            self.team_2.games_lost += 1
         elif self.team_2_score > self.team_1_score:
             winner = self.team_2.name
             self.team_2.games_played += 1
-            self.team_2.games_won += 1
+            self.team_2.games_lost += 1
+            self.team_1.games_played += 1
+            self.team_1.games_lost += 1
         else:
             self.team_1.games_drawn += 1
             self.team_2.games_drawn += 1
