@@ -21,7 +21,7 @@ def select_all():
 
     for row in output:
         league = league_repo.select(row["league_id"])
-        team = Team(row['name'], league, row['games_played'], row['games_won'], row['games_lost'], row['games_drawn'], row['id'])
+        team = Team(row['name'], row['games_played'], row['games_won'], row['games_lost'], row['games_drawn'], league, row['id'])
         teams.append(team)
     return teams
 
@@ -32,7 +32,7 @@ def select(id):
     output = run_sql(sql, values)[0]
     
     league = league_repo.select(output["league_id"])
-    team = Team(output['name'], league, output['games_played'], output['games_won'], output['games_lost'], output['games_drawn'], output['id'])
+    team = Team(output['name'], output['games_played'], output['games_won'], output['games_lost'], output['games_drawn'], league, output['id'])
     return team
 
 
@@ -48,8 +48,8 @@ def delete(id):
 
 
 def update(team):
-    sql = "UPDATE teams SET (name, league_id, games_played, games_won, games_lost, games_drawn) = (%s, %s, %s, %s, %s, %s) WHERE id = %s"
-    values = [team.name, team.league.id, team.games_played, team.games_won, team.games_lost, team.games_drawn, team.id]
+    sql = "UPDATE teams SET (name, games_played, games_won, games_lost, games_drawn, league_id) = (%s, %s, %s, %s, %s, %s) WHERE id = %s"
+    values = [team.name, team.games_played, team.games_won, team.games_lost, team.games_drawn, team.league.id, team.id]
     run_sql(sql, values)
 
 

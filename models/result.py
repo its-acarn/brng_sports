@@ -9,13 +9,13 @@ class Result:
 
 
     def determine_result(self):
-        if self.team_1_score > self.team_2_score:
+        if float(self.team_1_score) > float(self.team_2_score):
             self.team_1.games_played += 1
             self.team_1.games_won += 1
             self.team_2.games_played += 1
             self.team_2.games_lost += 1
 
-        elif self.team_2_score > self.team_1_score:
+        elif float(self.team_2_score) < float(self.team_1_score):
             self.team_2.games_played += 1
             self.team_2.games_won += 1
             self.team_1.games_played += 1
@@ -25,3 +25,16 @@ class Result:
             self.team_2.games_played += 1
             self.team_1.games_drawn += 1
             self.team_2.games_drawn += 1
+
+
+    def get_winner(self):
+        if float(self.team_1_score) > float(self.team_2_score):
+            winner = self.team_1
+            return winner
+
+        elif float(self.team_2_score) < float(self.team_1_score):
+            winner = self.team_2
+            return winner
+
+        else:
+            return None

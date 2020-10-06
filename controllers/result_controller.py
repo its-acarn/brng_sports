@@ -30,26 +30,34 @@ def create_result():
     team_2 = team_repo.select(team_2_id)
     team_2_score = request.form["team_2_score"]
 
+    print("team1score", team_1_score, "team2score", team_2_score)
+
     new_result = Result(team_1, team_1_score, team_2, team_2_score)
     result_repo.save(new_result)
     
-    if team_1_score < team_2_score:
+    if int(team_1_score) > int(team_2_score):
         team_1.games_played += 1
         team_1.games_won += 1
+
         team_2.games_played += 1
         team_2.games_lost += 1
-
-    elif team_1_score > team_2_score:
+        print("11111111111111111111111111111")
+        # import pdb; pdb.set_trace()
+    elif int(team_1_score) < int(team_2_score):
         team_1.games_played += 1
         team_1.games_lost += 1
+
         team_2.games_played += 1
         team_2.games_won += 1
+        print("2222222222222222222222222222")
 
     else:
         team_1.games_played += 1
-        team_1.drawn += 1
+        team_1.games_drawn += 1
+
         team_2.games_played += 1
-        team_2.drawn += 1
+        team_2.games_drawn += 1
+        print("3333333333333333333333333")
 
     team_repo.update(team_1)
     team_repo.update(team_2)
@@ -82,12 +90,59 @@ def update_result(id):
     team_2_score = request.form["team_2_score"]
 
     result = result_repo.select(id)
+
+    winner = result.get_winner()
+    print("############################", winner.name)
+    print("############################", result.team_1.name)
+    print("############################", result.team_2.name)
+
+
+    if (winner == result.team_1) :
+        team_1.games_played -= 1
+        team_1.games_won -= 1 
+        team_2.games_played -= 1
+        team_2.games_lost -= 1 
+
+    elif (winner == result.team_2) :
+        team_1.games_played -= 1
+        team_1.games_lost -= 1 
+        team_2.games_played -= 1
+        team_2.games_won -= 1 
+
+    else:
+        team_1.games_played -= 1
+        team_2.games_played -= 1
+        result.team_1.games_drawn -= 1
+        result.team_2.games_drawn -= 1
+
     result.team_1 = team_1
     result.team_1_score = team_1_score
     result.team_2 = team_2
     result.team_2_score = team_2_score
 
-    result.determine_result()#WRONG FUNCTION TO USE WHEN UPDATING RESULTS AS IT KEEPS ADDING GAMES INSTEAD OF REPLACING VALUES
+    winner = result.get_winner()
+    print("############################", winner.name)
+    print("############################", team_1.name)
+    print("############################", team_2.name)
+
+
+    if (winner == team_1) :
+        team_1.games_played += 1
+        team_1.games_won += 1 
+        team_2.games_played += 1
+        team_2.games_lost += 1 
+
+    elif (winner == team_2) :
+        team_1.games_played += 1
+        team_1.games_lost += 1 
+        team_2.games_played += 1
+        team_2.games_won += 1 
+
+    else:
+        team_1.games_played += 1
+        team_2.games_played += 1
+        result.team_1.games_drawn += 1
+        result.team_2.games_drawn += 1
 
     team_repo.update(team_1)
     team_repo.update(team_2)
