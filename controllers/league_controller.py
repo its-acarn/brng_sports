@@ -36,8 +36,9 @@ def create_leagues():
 def show_league(id):
     leagues = league_repo.select_all()
     league = league_repo.select(id)
-    #ADD IN LEAGUE TEAMS
-    return render_template("/leagues/show.html", leagues=leagues, league=league)
+    teams = team_repo.select_all()
+    results = result_repo.select_all()
+    return render_template("/leagues/show.html", leagues=leagues, league=league, teams=teams, results=results)
 
 # EDIT
 @leagues_blueprint.route("/leagues/<id>/edit")
