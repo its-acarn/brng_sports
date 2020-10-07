@@ -486,3 +486,54 @@ body > footer > h4 > span {
 	text-decoration-color: #ffff00;
 	font-weight: bold;
 }
+
+/* LEAGUES/NEW */
+
+.right-container-items-leagues-new {
+	display: flex;
+	flex-direction: column;
+	width: 50vw;
+	text-align: center;
+	align-items: center;
+	justify-content: center;
+}
+
+#league-new-image {
+	background: url("img/ashton-clark-02bN29Dz9Sg-unsplash.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.leagues-new-h2 {
+	margin: 5%;
+	color: white;
+}
+
+.right-container-items-leagues-new form {
+	color: white;
+}
+
+.right-container-items-leagues-new .form-div {
+	text-align: center;
+	width: 75%;
+}
+
+.right-container-items-leagues-new .form-div input {
+	width: 130px;
+	font-family: "Red Hat Text", sans-serif;
+	font-size: 16px;
+	color: #ffff00;
+	background-color: #000067;
+	border: none;
+}
+
+/* TEAMS/NEW */
+.right-container-items-leagues-new .form-div select {
+	width: 130px;
+	font-family: "Red Hat Text", sans-serif;
+	font-size: 16px;
+	color: #ffff00;
+	background-color: #000067;
+	border: none;
+}

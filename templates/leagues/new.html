@@ -2,23 +2,31 @@
 
 {% block content %}
 
-<section>
-    <div class="left-container-teams"></div>
-    <div class="right-container-teams">
-        <h2>ADD LEAGUE</h2>
-        <form action="/leagues" method="POST">
-            <div>
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name">
-            </div><br>
-            <div>
-                <label for="league_size_limit">League Size Limit:</label>
-                <input type="number" id="league_size_limit" name="league_size_limit">
-            </div><br>
-            <div>
-                <input type="submit">
-            </div>
-        </form>
+<section class="left-right-container">
+    <div class="left-container-items" id="league-new-image">
+        <div class="text-overlay">
+            <h2>ADD NEW LEAGUE</h2>
+        </div>
+    </div>
+    <div class="right-container-items-leagues-new">
+        <div class="leagues-new-h2">
+            <h2>Add New League</h2>
+        </div>
+        <div class="form-div">
+            <form action="/leagues" method="POST">
+                <div>
+                    <label for="name">League Name:</label>
+                    <input type="text" id="name" name="name">
+                </div><br>
+                <div>
+                    <label for="league_size_limit">League Size Limit:</label>
+                    <input type="number" id="league_size_limit" name="league_size_limit">
+                </div><br>
+                <div>
+                    <input type="submit">
+                </div>
+            </form>
+        </div>
     </div>
 </section>
 
