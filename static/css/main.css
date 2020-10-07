@@ -105,7 +105,7 @@ body > footer > h4 > span {
 	background-position: center;
 	text-align: center;
 	align-items: center;
-	/* justify-content: center; */
+	justify-content: center;
 }
 
 .left-container-items > p {
@@ -148,6 +148,127 @@ body > footer > h4 > span {
 }
 
 .right-container-items > div > a:hover {
+	text-decoration: underline;
+	text-decoration-color: #ffff00;
+}
+
+/* LEAGUES/INDEX STYLES */
+
+.left-right-container-leagues {
+	display: flex;
+	background-color: #00009a;
+	height: 84vh;
+	margin: 0;
+	overflow-y: scroll;
+}
+
+.text-overlay {
+	display: flex;
+	height: 20%;
+	width: 100%;
+	background-color: #ffff00;
+	opacity: 50%;
+	align-items: center;
+	justify-content: center;
+}
+
+.text-overlay > h2 {
+	color: #000067;
+	font-style: italic;
+	font-weight: bold;
+	font-size: 400%;
+}
+
+.left-container-items-leagues {
+	display: flex;
+	width: 50vw;
+	background: url("img/free-to-use-sounds-_TWWlCYfBj8-unsplash.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	text-align: center;
+	align-items: center;
+	justify-content: center;
+}
+
+.right-container-items-leagues {
+	display: flex;
+	flex-direction: column;
+	width: 50vw;
+	align-items: center;
+	justify-content: space-between;
+	color: white;
+	overflow-y: scroll;
+}
+
+.table-div {
+	display: flex;
+	text-align: center;
+	padding-top: 10%;
+}
+table {
+	border-spacing: 0;
+	table-layout: fixed;
+	width: 75%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+th {
+	border-bottom: 2px solid white;
+	vertical-align: middle;
+	font-weight: normal;
+	height: 60px;
+}
+
+td {
+	height: 60px;
+}
+
+td > a {
+	text-decoration: none;
+	color: white;
+	vertical-align: middle;
+}
+
+td > a:hover {
+	text-decoration: underline;
+	text-decoration-color: #ffff00;
+	font-weight: bold;
+}
+
+/* .right-container-items-leagues > div > table {
+	display: flex;
+	background-color: #000067;
+	margin: auto;
+	align-items: center;
+	justify-content: center;
+	border-radius: 3%;
+	border: 2px #ffff00 solid;
+} */
+
+.add-button {
+	display: flex;
+	background-color: #000067;
+	align-items: center;
+	justify-content: center;
+	border-radius: 3%;
+	border: 2px #ffff00 solid;
+	margin-bottom: 10%;
+	height: 6%;
+	width: 20%;
+}
+
+.add-button > a {
+	color: white;
+	padding: 1em 1.2em;
+	text-decoration: none;
+	font-family: "Raleway", sans-serif;
+	font-weight: bold;
+	font-size: 100%;
+}
+
+.add-button a:hover {
 	text-decoration: underline;
 	text-decoration-color: #ffff00;
 }

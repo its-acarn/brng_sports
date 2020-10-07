@@ -11,15 +11,22 @@
             <section class="league_table">
                 <table>
                     <tr>
+                        <th>Pos.</th>
                         <th>Team</th>
                         <th>Games</th>
                         <th>Wins</th>
                         <th>Losses</th>
                         <th>Draws</th>
                     </tr>
+
+                    {% set ns = namespace(n = 0) %}
+
+
                     {% for team in teams %}
                     {% if league.id == team.league.id %}
+                    {% set ns.n = ns.n + 1 %}
                     <tr>
+                        <td>{{ ns.n }}</td>
                         <td><a href="/teams/{{ team.id }}">{{ team.name }}</a></td>
                         <td>{{ team.games_played }}</td>
                         <td>{{ team.games_won }}</td>

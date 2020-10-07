@@ -12,11 +12,10 @@ def save(team):
     id = output[0]['id']
     team.id = id
 
-
 def select_all():
     teams = []
 
-    sql = "SELECT * FROM teams"
+    sql = "SELECT * FROM teams ORDER BY games_won DESC, games_drawn DESC, name ASC"
     output = run_sql(sql)
 
     for row in output:
@@ -24,6 +23,18 @@ def select_all():
         team = Team(row['name'], row['games_played'], row['games_won'], row['games_lost'], row['games_drawn'], league, row['id'])
         teams.append(team)
     return teams
+
+# def select_all():
+#     teams = []
+
+#     sql = "SELECT * FROM teams"
+#     output = run_sql(sql)
+
+#     for row in output:
+#         league = league_repo.select(row["league_id"])
+#         team = Team(row['name'], row['games_played'], row['games_won'], row['games_lost'], row['games_drawn'], league, row['id'])
+#         teams.append(team)
+#     return teams
 
 
 def select(id):
@@ -52,15 +63,16 @@ def update(team):
     values = [team.name, team.games_played, team.games_won, team.games_lost, team.games_drawn, team.league.id, team.id]
     run_sql(sql, values)
 
-def select_all_ranked():
-    teams = []
-    sql = "SELECT *, RANK() OVER (ORDER BY games_won DESC, games_drawn DESC, name ASC) AS rank FROM teams ORDER BY rank"
-    output = run_sql(sql)
 
-    for row in output:
-        league = league_repo.select(row["league_id"])
-        team = Result(output['name'], output['games_played'], output['games_won'], output['games_lost'], output['games_drawn'], league, output['id'])
-        teams.append(result)
+# def select_all_ranked():
+#     teams = []
+#     sql = "SELECT *, RANK() OVER (ORDER BY games_won DESC, games_drawn DESC, name ASC) AS rank FROM teams ORDER BY rank"
+#     output = run_sql(sql)
 
-    return teams
+#     for row in output:
+#         league = league_repo.select(row['league_id'])
+#         team = Team(output['name'], output['games_played'], output['games_won'], output['games_lost'], output['games_drawn'], league, output['id'], output['rank'])
+#         teams.append(team)
+
+#     return teams
 

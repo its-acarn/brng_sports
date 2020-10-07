@@ -2,25 +2,34 @@
 
 {% block content %}
 
-<section>
-    <div class="left-container-teams"></div>
-    <div class="right-container-teams">
-        <h2>LEAGUES</h2>
-        <table>
-            <tr>
-                <th>League Name</th>
-                <th>Size</th>
-                <th>Current No. Teams</th>
-            </tr>
-            {% for league in leagues %}
-            <tr>
-                <td><a href="/leagues/{{ league.id }}">{{ league.name }}</a></td>
-                <td>{{ league.league_size_limit }}</td>
-                <td>{{ league.no_of_teams}}</td>
-            </tr>
-            {% endfor %}
-        </table>
-        <a href="/league/new">ADD LEAGUE</a>
+<section class="left-right-container-leagues">
+    <div class="left-container-items-leagues">
+        <div class="text-overlay">
+            <h2>LEAGUES</h2>
+        </div>
+    </div>
+    <div class="right-container-items-leagues">
+        <div class="table-div">
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Size</th>
+                    <th>Teams</th>
+                </tr>
+                {% for league in leagues %}
+                <tr>
+                    <td> {{ league.id }}</td>
+                    <td><a href="/leagues/{{ league.id }}">{{ league.name }}</a></td>
+                    <td>{{ league.league_size_limit }}</td>
+                    <td>{{ league.no_of_teams}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="add-button">
+            <a href="/league/new">ADD LEAGUE</a>
+        </div>
     </div>
 </section>
 
