@@ -622,3 +622,102 @@ body > footer > h4 > span {
 	width: 100px;
 	border: #ffff00 2px solid;
 }
+
+/* RESULT/SHOW */
+.result-container {
+	background-color: #00009a;
+	height: 84vh;
+	width: 100vw;
+	overflow: hidden;
+	color: white;
+	font-family: "Red Hat Text", sans-serif;
+	display: flex;
+	flex-direction: column;
+}
+
+.result-show-header {
+	margin-top: 3%;
+	height: 10vh;
+	text-align: center;
+	font-size: 240%;
+}
+
+.result-show-league {
+	height: 10vh;
+	text-align: center;
+	font-size: 240%;
+}
+
+.result-show-league a {
+	text-decoration: none;
+	color: #ffff00;
+}
+.result-show-league a:hover {
+	text-decoration: underline;
+	color: #ffff00;
+}
+
+.result-show-inner-flex {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	height: 40%;
+	margin: 0 10%;
+	font-size: 200%;
+}
+
+.result-show-team-name {
+	padding: 0;
+	margin: 0;
+	text-align: center;
+}
+
+.result-show-team-name a {
+	padding: 0;
+	margin: 0;
+	text-align: center;
+	color: white;
+	text-decoration: none;
+	font-style: italic;
+	font-weight: bold;
+}
+
+.result-show-team-name a:hover {
+	text-decoration: underline;
+	text-decoration-color: #ffff00;
+}
+
+.result-show-team-score {
+	padding: 0 10%;
+}
+
+.result-show-edit-parent {
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	align-items: center;
+}
+
+.result-show-edit {
+	display: flex;
+	background-color: #000067;
+	border: #ffff00 solid 2px;
+	border-radius: 2px;
+	align-items: center;
+	align-items: center;
+	justify-content: center;
+}
+
+.result-show-edit a {
+	color: white;
+	text-decoration: none;
+	font-size: 22px;
+	font-weight: bold;
+	padding: 1em 1.2em;
+}
+
+.result-show-edit a:hover {
+	text-decoration: underline;
+	text-decoration-color: #ffff00;
+}
