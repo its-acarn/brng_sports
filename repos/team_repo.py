@@ -52,15 +52,15 @@ def update(team):
     values = [team.name, team.games_played, team.games_won, team.games_lost, team.games_drawn, team.league.id, team.id]
     run_sql(sql, values)
 
+def select_all_ranked():
+    teams = []
+    sql = "SELECT *, RANK() OVER (ORDER BY games_won DESC, games_drawn DESC, name ASC) AS rank FROM teams ORDER BY rank"
+    output = run_sql(sql)
 
-# def select_all_team_results(id):
-#     results = []
-#     sql = "SELECT results.* FROM results WHERE results.team_1_id = %s OR results.team_2_id = %s"
-#     values = [id, id]
-#     output = run_sql(sql, values)
-#     for row in output:
-#         result = Result(row['team_1_id'], row['team_1_score'], row['team_2_id'], row['team_2_score'], row['result'], row['id'])
-#         results.append(result)
+    for row in output:
+        league = league_repo.select(row["league_id"])
+        team = Result(output['name'], output['games_played'], output['games_won'], output['games_lost'], output['games_drawn'], league, output['id'])
+        teams.append(result)
 
-#     return results
-    
+    return teams
+

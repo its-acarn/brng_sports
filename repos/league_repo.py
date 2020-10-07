@@ -46,6 +46,3 @@ def update(league):
     sql = "UPDATE leagues SET (name, league_size_limit, no_of_teams) = (%s, %s, %s) WHERE id = %s"
     values = [league.name, league.league_size_limit, league.no_of_teams, league.id]
     run_sql(sql, values)
-
-
-# def select_all_teams_in_league(id):
