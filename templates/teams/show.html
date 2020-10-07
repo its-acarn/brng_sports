@@ -2,74 +2,81 @@
 
 {% block content %}
 
-<section>
-    <div class="left-container-teams">
-
-    </div>
-    <div class="right-container-teams">
-
-        <h2>{{ team.name }}</h2>
-        <div>
+<section class="left-right-container-leagues-show">
+    <div class="left-container-items-teams-show">
+        <div class="teams-show-h1">
+            <h1>Team: {{ team.name }}</h1>
+        </div>
+        <div class="teams-show-h4">
             <h4>Team plays in the <a href="/leagues/{{ team.league.id }}">{{ team.league.name }}</a> league</h4>
+        </div>
+        <div class="teams-show-h4">
             <h4>League Record</h4>
+        </div>
+        <div class="record-div">
             <div>
-                Games Played
+                <div class="row1">
+                    Games Played
+                </div>
+                <div class="row1">
+                    Won
+                </div>
+                <div class="row1">
+                    Lost
+                </div>
+                <div class="row1">
+                    Draws
+                </div>
             </div>
             <div>
-                Won
-            </div>
-            <div>
-                Lost
-            </div>
-            <div>
-                Draws
-            </div>
-            <div>
-                {{ team.games_played }}
-            </div>
-            <div>
-                {{ team.games_won }}
-            </div>
-            <div>
-                {{ team.games_lost }}
-            </div>
-            <div>
-                {{ team.games_drawn}}
+                <div class="row1">
+                    {{ team.games_played }}
+                </div>
+                <div class="row1">
+                    {{ team.games_won }}
+                </div>
+                <div class="row1">
+                    {{ team.games_lost }}
+                </div>
+                <div class="row1">
+                    {{ team.games_drawn}}
+                </div>
             </div>
         </div>
+    </div>
+
+    <div class="right-container-items-teams-show">
         <div>
-            <h4>Results</h4>
+            <h2 class="team-show-results">{{ team.name }} Results</h2>
+        </div>
 
+        <table class="league-table-show-team">
             {% for result in results %}
-
-            <a href="/results/{{ result.id }}">
-                {% if (result.team_1.name == team.name)  or (result.team_2.name == team.name) %}
-                <div>
-                    {{ result.team_1.name }}
-                </div>
-                <div>
-                    v
-                </div>
-                <div>
-                    {{ result.team_2.name }}
-                </div>
-                <div>
-                    {{ result.team_1_score }}
-                </div>
-                <div>
-                    {{ result.team_2_score }}
-                </div>
-                {% endif %}
-            </a>
+            {% if (result.team_1.name == team.name)  or (result.team_2.name == team.name) %}
+            <tr>
+                <th><a href="/results/{{ result.id }}">{{ result.team_1.name }}</a></th>
+                <th>v</th>
+                <th><a href="/results/{{ result.id }}">{{ result.team_2.name }}</a></th>
+            </tr>
+            <tr>
+                <td>{{ result.team_1_score }}</td>
+                <td></td>
+                <td>{{ result.team_2_score }}</td>
+            </tr>
+            {% endif %}
             {% endfor %}
+        </table>
+        <div class="edit-league">
             <div>
                 <h4>Edit Team</h4>
             </div>
-            <div>
-                <a href="/teams/{{ team.id }}/edit">Update {{team.name}} Team Info</a>
-            </div>
-            <div>
-                <a href="/result/new">Add result</a>
+            <div class="edit-league-a-tag">
+                <div class="add-button-league">
+                    <a href="/teams/{{ team.id }}/edit">Update {{team.name}} Team Info</a>
+                </div>
+                <div class="add-button-league">
+                    <a href="/result/new">Add result</a>
+                </div>
             </div>
         </div>
     </div>

@@ -394,6 +394,7 @@ body > footer > h4 > span {
 	width: 40vw;
 	border-spacing: 0;
 	margin-top: 1%;
+	text-align: center;
 }
 
 .league-table-show-results th {
@@ -536,4 +537,88 @@ body > footer > h4 > span {
 	color: #ffff00;
 	background-color: #000067;
 	border: none;
+}
+
+/* TEAMS/SHOW */
+
+.team-show-results {
+	margin: 5% 0;
+}
+
+.right-container-items-teams-show {
+	display: flex;
+	flex-direction: column;
+	width: 50vw;
+	align-items: center;
+	justify-content: space-;
+	color: white;
+	overflow-y: scroll;
+}
+
+.league-table-show-team {
+	margin-left: auto;
+	margin-right: auto;
+	table-layout: fixed;
+	width: 35vw;
+	border-spacing: 0 3px;
+	margin-top: 1%;
+	text-align: center;
+}
+
+.league-table-show-team tr {
+	background-color: #000067;
+}
+
+.league-table-show-team th {
+	background-color: #000067;
+	height: 40px;
+	width: 14vw;
+}
+
+.league-table-show-team a {
+	color: white;
+	text-decoration: none;
+}
+.league-table-show-team td {
+	background-color: #000067;
+	height: 40px;
+	width: 14vw;
+}
+
+.left-container-items-teams-show {
+	display: flex;
+	flex-flow: row wrap;
+	width: 50vw;
+	text-align: center;
+	align-items: flex-start;
+	justify-content: center;
+	background-color: #000067;
+}
+
+.record-div {
+	display: flex;
+	flex-wrap: row wrap;
+	width: 80%;
+	justify-content: center;
+	align-items: center;
+	vertical-align: middle;
+}
+.record-div .row1 {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.teams-show-h1 {
+	width: 100%;
+}
+
+.teams-show-h4 {
+	width: 100%;
+}
+
+.record-div > div > div {
+	height: 100px;
+	width: 100px;
+	border: #ffff00 2px solid;
 }
