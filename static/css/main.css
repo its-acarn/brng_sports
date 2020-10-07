@@ -195,7 +195,7 @@ body > footer > h4 > span {
 	flex-direction: column;
 	width: 50vw;
 	align-items: center;
-	justify-content: space-between;
+	/* justify-content: space-between; */
 	color: white;
 	overflow-y: scroll;
 }
@@ -418,4 +418,71 @@ body > footer > h4 > span {
 #results-image {
 	background: url("/static/css/img/hence-the-boom-_GPDUfIlooM-unsplash.jpg");
 	background-size: cover;
+}
+
+/* TEAMS/INDEX STYLES */
+.left-container-teams {
+	display: flex;
+	width: 50vw;
+	background: url("/static/css/img/ameer-basheer-Yzef5dRpwWg-unsplash.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	text-align: center;
+	align-items: center;
+	justify-content: center;
+}
+
+.right-container-teams {
+	display: flex;
+	flex-direction: column;
+	width: 50vw;
+	align-items: center;
+	/* justify-content: space-between;           s */
+	color: white;
+	overflow-y: scroll;
+}
+
+.teams-h2 {
+	color: white;
+	margin-top: 4%;
+	padding: 0;
+}
+
+.right-container-teams > div > h2 {
+	color: white;
+	margin: 0;
+}
+
+.teams-table {
+	border-spacing: 0;
+	table-layout: fixed;
+	width: 75%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.teams-table th {
+	border-bottom: 2px solid white;
+	vertical-align: middle;
+	font-weight: normal;
+	height: 60px;
+	font-size: 1.2em;
+	color: white;
+}
+
+.teams-table td {
+	height: 30px;
+}
+
+.teams-table td > a {
+	text-decoration: none;
+	color: white;
+	vertical-align: middle;
+}
+
+.teams-table td > a:hover {
+	text-decoration: underline;
+	text-decoration-color: #ffff00;
+	font-weight: bold;
 }

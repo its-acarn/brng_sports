@@ -2,25 +2,33 @@
 
 {% block content %}
 
-<section>
+<section class="left-right-container-leagues">
     <div class="left-container-teams">
-        <h2>TEAMS</h2>
+        <div class="text-overlay">
+            <h2>TEAMS</h2>
+        </div>
     </div>
     <div class="right-container-teams">
-        <h2>Directory</h2>
-        <table>
-            <tr>
-                <th>Team</th>
-                <th>League</th>
-            </tr>
-            {% for team in teams %}
-            <tr>
-                <td><a href="/teams/{{ team.id }}">{{ team.name }}</a></td>
-                <td><a href="/leagues/{{ team.league.id }}">{{ team.league.name }}</a></td>
-            </tr>
-            {% endfor %}
-        </table><br>
-        <a href="/teams/new">ADD TEAM</a>
+        <div class="add-button">
+            <a href="/teams/new">ADD NEW TEAM</a>
+        </div>
+        <div class="teams-h2">
+            <h2>Team Directory</h2>
+        </div>
+        <div class="table-div">
+            <table class="teams-table">
+                <tr>
+                    <th>Team</th>
+                    <th>League</th>
+                </tr>
+                {% for team in teams %}
+                <tr>
+                    <td><a href="/teams/{{ team.id }}">{{ team.name }}</a></td>
+                    <td><a href="/leagues/{{ team.league.id }}">{{ team.league.name }}</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
     </div>
 </section>
 
