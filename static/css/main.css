@@ -517,11 +517,11 @@ body > footer > h4 > span {
 
 .right-container-items-leagues-new .form-div {
 	text-align: center;
-	width: 75%;
+	width: 80%;
 }
 
 .right-container-items-leagues-new .form-div input {
-	width: 130px;
+	/* width: 130px; */
 	font-family: "Red Hat Text", sans-serif;
 	font-size: 16px;
 	color: #ffff00;
@@ -531,7 +531,7 @@ body > footer > h4 > span {
 
 /* TEAMS/NEW */
 .right-container-items-leagues-new .form-div select {
-	width: 130px;
+	/* width: 130px; */
 	font-family: "Red Hat Text", sans-serif;
 	font-size: 16px;
 	color: #ffff00;

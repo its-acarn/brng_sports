@@ -18,14 +18,12 @@
         <div class="table-div">
             <table class="leagues-table">
                 <tr>
-                    <th>ID</th>
                     <th>Name</th>
                     <th>Size</th>
                     <th>Teams</th>
                 </tr>
                 {% for league in leagues %}
                 <tr>
-                    <td> {{ league.id }}</td>
                     <td><a href="/leagues/{{ league.id }}">{{ league.name }}</a></td>
                     <td>{{ league.league_size_limit }}</td>
                     <td>{{ league.no_of_teams}}</td>
