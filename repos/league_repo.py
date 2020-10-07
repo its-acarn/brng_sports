@@ -14,7 +14,7 @@ def save(league):
 def select_all():
     leagues = []
 
-    sql = "SELECT * FROM leagues"
+    sql = "SELECT * FROM leagues ORDER BY id"
     output = run_sql(sql)
 
     for row in output:

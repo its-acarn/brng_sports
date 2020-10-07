@@ -2,64 +2,85 @@
 
 {% block content %}
 
-<section>
-    <div class="left-container-teams"></div>
-    <div class="right-container-teams">
-
+<section class="left-right-container-leagues-show">
+    <div class="left-container-items-leagues-show">
         <div>
-            <h2>Teams in {{ league.name }}</h2>
-            <section class="league_table">
-                <table>
+            <div class="text-overlay-league">
+                <h1>{{ league.name }}</h1>
+            </div>
+
+
+            <section>
+                <table class="league-table-show">
                     <tr>
                         <th>Pos.</th>
                         <th>Team</th>
-                        <th>Games</th>
-                        <th>Wins</th>
-                        <th>Losses</th>
-                        <th>Draws</th>
+                        <th>GP</th>
+                        <th>W</th>
+                        <th>L</th>
+                        <th>D</th>
                     </tr>
-
                     {% set ns = namespace(n = 0) %}
-
-
                     {% for team in teams %}
                     {% if league.id == team.league.id %}
                     {% set ns.n = ns.n + 1 %}
                     <tr>
                         <td>{{ ns.n }}</td>
-                        <td><a href="/teams/{{ team.id }}">{{ team.name }}</a></td>
-                        <td>{{ team.games_played }}</td>
-                        <td>{{ team.games_won }}</td>
-                        <td>{{ team.games_lost }}</td>
-                        <td>{{ team.games_drawn }}</td>
-                    </tr>
-                    {% endif %}
-                    {% endfor %}
-                </table>
-            </section><br>
-            <section class="league_results">
-                <h4>League Results</h4>
-                {% for result in results %}
-                {% if league.id == result.team_1.league.id %}
-
-                <table>
-                    <tr>
-                        <th><a href="/results/{{ result.id }}">{{ result.team_1.name }}</a> v</th>
-                        <th><a href="/results/{{ result.id }}">{{ result.team_2.name }}</a></th>
-                    </tr>
-                    <tr>
-                        <td>{{ result.team_1_score }}</td>
-                        <td>{{ result.team_2_score }}</td>
+                        <td class="team-name-cell"><a href="/teams/{{ team.id }}">{{ team.name }}</a></td>
+                        <td class="tablecell">{{ team.games_played }}</td>
+                        <td class="tablecell">{{ team.games_won }}</td>
+                        <td class="tablecell">{{ team.games_lost }}</td>
+                        <td class="tablecell">{{ team.games_drawn }}</td>
                     </tr>
                     {% endif %}
                     {% endfor %}
                 </table>
             </section>
-            <h4>Edit League</h4>
-            <a href="/teams/new">Add New Team</a><br>
-            <a href="/result/new">Add New Result</a><br>
-            <a href="/leagues/{{ league.id }}/edit">Update {{league.name}} Info</a>
         </div>
+    </div>
+    <div class="right-container-items-leagues-show">
+        <div class="edit-league">
+            <div>
+                <h2>Edit League</h2>
+            </div>
+            <div class="edit-league-a-tag">
+                <div class="add-button-league">
+                    <a href="/teams/new">Add New Team</a>
+                </div>
+                <div class="add-button-league">
+                    <a href="/result/new">Add New Result</a>
+                </div>
+                <div class="add-button-league">
+                    <a href="/leagues/{{ league.id }}/edit">Update {{league.name}} Info</a>
+                </div>
+            </div>
+
+        </div>
+        <section class="league-results">
+            <div>
+                <h2>League Results</h2>
+            </div>
+
+            {% for result in results %}
+            {% if league.id == result.team_1.league.id %}
+            <table class="league-table-show-results">
+                <tr>
+                    <th><a href="/results/{{ result.id }}">{{ result.team_1.name }}</a></th>
+                    <th>v</th>
+                    <th><a href="/results/{{ result.id }}">{{ result.team_2.name }}</a></th>
+                </tr>
+                <tr>
+                    <td>{{ result.team_1_score }}</td>
+                    <td></td>
+                    <td>{{ result.team_2_score }}</td>
+                </tr>
+                {% endif %}
+                {% endfor %}
+            </table>
+        </section>
+
+
+    </div>
     </div>
 </section>
 

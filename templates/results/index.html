@@ -2,19 +2,38 @@
 
 {% block content %}
 
-<section>
-    <div class="left-container-teams"></div>
-    <div class="right-container-teams">
-        <h2>RESULTS</h2>
-        <ul>
-            {% for result in results %}
-            <li><a href="/results/{{ result.id }}">{{ result.team_1.name }} [{{ result.team_1_score }}] v
-                    {{ result.team_2.name }} [{{ result.team_2_score }}]</a></li>
-            {% endfor %}
-        </ul>
-        <a href="/result/new">ADD RESULT</a>
+<section class="left-right-container-leagues">
+    <div class="left-container-items" id="results-image">
+        <div class="text-overlay">
+            <h2>RESULTS</h2>
+        </div>
     </div>
+    <div class="right-container-items-leagues">
+        <div class="add-button">
+            <a href="/result/new">ADD NEW RESULT</a>
+        </div>
 
+        <section class="league-results">
+            <div>
+                <h2 class="all-results">All Results</h2>
+            </div>
+
+            {% for result in results %}
+            <table class="league-table-show-results">
+                <tr>
+                    <th><a href="/results/{{ result.id }}">{{ result.team_1.name }}</a></th>
+                    <th>v</th>
+                    <th><a href="/results/{{ result.id }}">{{ result.team_2.name }}</a></th>
+                </tr>
+                <tr>
+                    <td>{{ result.team_1_score }}</td>
+                    <td></td>
+                    <td>{{ result.team_2_score }}</td>
+                </tr>
+
+                {% endfor %}
+            </table>
+        </section>
 </section>
 
 {% endblock %}
