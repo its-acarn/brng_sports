@@ -6,7 +6,7 @@ def run_sql(sql, values = None):
     results = []
     
     try:
-        conn=psycopg2.connect("dbname='DATABASE_URL'")
+        conn=psycopg2.connect("dbname='postgres://usxgbeocilcais:bb23b554c2d5002767e60615684e43912b893104e91fe96f84875210c7cec8ad@ec2-54-246-87-132.eu-west-1.compute.amazonaws.com:5432/df47ikncj3r9tc'")
         cur = conn.cursor(cursor_factory=ext.DictCursor)   
         cur.execute(sql, values)
         conn.commit()
