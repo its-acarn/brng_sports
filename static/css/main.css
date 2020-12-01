@@ -283,6 +283,7 @@ body > footer > h4 > span {
 	align-items: flex-start;
 	justify-content: center;
 	background-color: #000067;
+	overflow-y: scroll;
 }
 
 .left-container-items-leagues-show h1 {
